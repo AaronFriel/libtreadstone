@@ -3,11 +3,14 @@ ifeq ($(shell [ $(THREADS) -gt 8 ] && echo yes),yes)
 THREADS := 8
 endif
 
-.PHONY: all clones e_clone po6_clone libtreadstone
+.PHONY: all clones lint e_clone po6_clone libtreadstone
 
 all: libtreadstone
 
 clones: e_clone po6_clone
+
+lint:
+	./check.sh
 
 e_clone:
 	@if [ -d e/.git ]; then \
